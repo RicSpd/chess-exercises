@@ -33,10 +33,34 @@ def fen_for_single_rank(lst):
 
 
 class ChessBoard:
+    """
+    Class that creates a chessboard and its Forsyth-Edwards Notation
+    (https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation)
 
+    Parameters
+    ----------
+    randomized : bool, default True
+        Are the number and types of pieces on the board randomized?
+    extra_populated : bool, default False
+        If False, the maximum amount of each piece will be the same as the starting position:
+        (8 pawns, 2 knights/bishops/rooks, 1 queen)
+        If True, we could have a maximum of 8 pieces per piece type:
+        (8 pawns/knights/bishops/rooks/queens)
+    equal_material: bool, default False
+        If True, the piece types will be balanced for the two players
+    pieces_dict: dict, optional
+        If specified, the chessboard will be generated with those amount of pieces.
+        Accepted keywords: `n_pieces_<color>` or `<color>_<piece>`
+        e.g. `n_pieces_white`, `white_pawns`, `black_rooks`, ...
+
+    Returns
+    -------
+    ChessBoard
+        Object with `self.board` as the actual board, and `self.fen` as the actual FEN
+    """
     def __init__(self, randomized=True, extra_populated=False, equal_material=False, pieces_dict=None):
-        # white_pawns=0, white_knights=0, white_bishops=0, white_rooks=0, white_queens=0,
-        # black_pawns=0, black_knights=0, black_bishops=0, black_rooks=0, black_queens=0
+        if pieces_dict is not None:
+            randomized = False
         self.randomized = randomized
         self.extra_populated = extra_populated
         self.equal_material = equal_material
@@ -45,6 +69,7 @@ class ChessBoard:
         self.pieces_dict = pieces_dict
         # initialize board
         self.board = np.full((8, 8), ' ')
+        self.fen = ''
         self.pieces_list = ['P', 'N', 'B', 'R', 'Q']
 
 
@@ -172,27 +197,28 @@ class ChessBoard:
             self.populate_board_specific()
 
 
-    def get_fen(self):
+    def generate_fen(self):
         """
         Generate, as string, the FEN out of a given input board
         """
-        # generale list of list of tuples
+        # generate list of list of tuples
         fen = [rle(self.board[i]) for i in range(8)]
         # generate list of FEN's for each rank
         fen = [fen_for_single_rank(l) for l in fen]
         # unite the single-rank FEN's
         fen = '/'.join(fen) + ' w - - 0 1'
-        return fen
+        self.fen = fen
 
 
 
 
 
-# fen = ChessBoard()
-# fen = ChessBoard(randomized=True, pieces_dict={'white_queens': 1, 'black_rooks': 1})
-# fen.populate_board()
+# # board = ChessBoard()
+# board = ChessBoard(randomized=True, pieces_dict={'white_queens': 1, 'black_rooks': 1})
+# board.populate_board()
+# board.generate_fen()
 
-# print(fen.board)
+# print(board.board)
 # print('')
-# print(fen.get_fen())
+# print(board.fen)
 # print('\nOK!\n')
