@@ -4,7 +4,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/homepage")
 def home():
     """
     Homepage
@@ -17,4 +17,4 @@ def exercises():
     """
     Page with the exercises that will return the FEN
     """
-    return render_template("index.html")
+    return render_template("exercises.html")

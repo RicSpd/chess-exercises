@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href=".././static/site.css" rel="stylesheet" type="text/css">
+    <title>Chess Exercises</title>
+    <link rel="icon" type="image/x-icon" href=".././static/favicon3.ico">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light" style="background-color: #c8dae6">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="homepage">
+          <img src=".././static/chess.png" width="80" height="50" alt="">
+        </a>
+      </div>
+    </nav>
+    <h1>Hello, world!123</h1>
+
+    <div id="main-wrapper">
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+
+                  <!-- CHECKBOXES -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="randomized" name="randomized" aria-describedby="randomized-help">
+                    <label class="form-check-label">Select pieces</label>
+                    <small id="randomized-help" class="form-text">
+                      <br>Enable to enter specific piece types and quantities. Otherwise, amounts and types of pieces on the board will be completely random, i.e. a player can get from 0 up to 31 pieces.
+                    </small>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="extra-populated" name="extra-populated" aria-describedby="extra-populated-help">
+                    <label class="form-check-label">Overpopulated</label>
+                    <small id="extra-populated-help" class="form-text">
+                      <br>If selected, the board could have a maximum of 8 pieces per type of piece, e.g. 8 queens, 4 rooks, 2 bishops, 5 knights.
+                      <br>Otherwise, the maximum amount of each piece will be the same as the starting position: 8 pawns, 2 knights/bishops/rooks, 1 queen.
+                    </small>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="equal-material" name="equal-material" aria-describedby="equal-material-help">
+                    <label class="form-check-label">Equal material</label>
+                    <small id="equal-material-help" class="form-text">
+                      <br>White and Black will have equal material on the board.
+                    </small>
+                  </div>
+
+                  <!-- SLIDERS -->
+                  <div class="row">
+                    <div class="col-6">
+                      <br><br>
+                      <h3>White</h3>
+                      <label for="white-pawns">Pawns</label>
+                      <select id="white-pawns" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                      </select>
+                      <br>
+                      <label for="white-knights">Knights</label>
+                      <select id="white-knights" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br>
+                      <label for="white-bishops">Bishops</label>
+                      <select id="white-bishops" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br>
+                      <label for="white-rooks">Rooks</label>
+                      <select id="white-rooks" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br>
+                      <label for="white-queens">Queens</label>
+                      <select id="white-queens" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <br><br>
+                      <h3>Black</h3>
+                      <label for="black-pawns">Pawns</label>
+                      <select id="black-pawns" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                      </select>
+                      <br>
+                      <label for="black-knights">Knights</label>
+                      <select id="black-knights" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br>
+                      <label for="black-bishops">Bishops</label>
+                      <select id="black-bishops" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br>
+                      <label for="black-rooks">Rooks</label>
+                      <select id="black-rooks" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br>
+                      <label for="black-queens">Queens</label>
+                      <select id="black-queens" class="selectPieces">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <div class="col-4">
+        <div class="container">
+          <div style="float:left">
+            Author: Riccardo Spadini
+          </div>
+          <div style="padding-left:20px;float:left">
+            <a href="mailto:riccardospadini95@gmail.com">
+              <img src=".././static/gmail.ico" width="20" height="20" alt="">
+            </a>
+          </div>
+          <div style="padding-left:12px;float:left">
+            <a href="https://www.linkedin.com/in/riccardo-spadini/" target="_blank" rel="noopener noreferrer">
+              <img src=".././static/linkedin.ico" width="20" height="20" alt="">
+            </a>
+          </div>
+          <div style="padding-left:10px;float:left">
+            <a href="https://github.com/RicSpd/chess-exercises" target="_blank" rel="noopener noreferrer">
+              <img src=".././static/github.ico" width="24" height="24" alt="">
+            </a>
+          </div>
+          <div style="padding-left:10px;float:left">
+            <a href="https://stackoverflow.com/users/7465462/ric-s" target="_blank" rel="noopener noreferrer">
+              <img src=".././static/stackoverflow.ico" width="20" height="20" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
+</html>

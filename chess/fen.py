@@ -43,9 +43,9 @@ class ChessBoard:
         Are the number and types of pieces on the board randomized?
     extra_populated : bool, default False
         If False, the maximum amount of each piece will be the same as the starting position:
-        (8 pawns, 2 knights/bishops/rooks, 1 queen)
+        8 pawns, 2 knights/bishops/rooks, 1 queen
         If True, we could have a maximum of 8 pieces per piece type:
-        (8 pawns/knights/bishops/rooks/queens)
+        8 pawns/knights/bishops/rooks/queens
     equal_material: bool, default False
         If True, the piece types will be balanced for the two players
     pieces_dict: dict, optional
