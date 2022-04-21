@@ -44,6 +44,11 @@ select.selectPieces {
   clear: both; */
 }
 
+img.smallImage {
+  position: relative;
+  bottom: 2px;
+}
+
 /* label {
   color: #B4886B;
   font-weight: bold;
