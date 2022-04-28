@@ -54,7 +54,6 @@
                   </div>
                   <br>
 
-                  <!-- TODO: crea card con la selezione dei pezzi che appare quando uno clicca sul tick "Select pieces" -->
                   <!-- INPUTS -->
                   <div class="row">
                     <div class="card bg-selectPiecesCard" id="select-pieces-card" style="display:none">
@@ -163,14 +162,30 @@
                   </div>
                 </div>
               </div>
+              <!-- TODO crea button per generare FEN ed eventualmente scacchiera -->
+              <div class="row">
+                <div class="col">
+                  <form action="/exercises" method="post">
+                    <button type="submit" id="go" class="btn btn-primary">Go!</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
           <p><br><br></p>
         </div>
+        <div class="col-sm-7" id="fen-board">
+          {% if fen %}
+          The FEN: {{ fen }}
+          {% else %}
+          Qui ci andrà il FEN e la scacchiera.
+          {% endif %}
+          <!-- <form action="{{ url_for('exercises')}}" method="post"> -->
+        </div>
       </div>
     </div>
 
-    <!-- * It seems there's no way to put the bottom navbar at the end of the page regardless of the screen dimension. -->
+    <!-- * I did not manage to put the bottom navbar at the end of the page regardless of the screen dimension. -->
     <nav class="navbar fixed-bottom navbar-light bg-light">
       <div class="col-4">
         <div class="container">
