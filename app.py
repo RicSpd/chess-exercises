@@ -19,8 +19,9 @@ def exercises():
     """
     Page with the exercises that will return the FEN and the chessboard image
     """
+    # TODO: scrivi la logica per generare il FEN utilizzando le funzioni sviluppate in precedenza
     if request.method == 'POST':
-        fen = 'EUREKA!'
+        fen = json.dumps(request.form)
         # randomized = request.data.get('randomized')
         # extra_populated = request.data.get('extra_populated')
         return render_template("exercises.html", fen=fen)

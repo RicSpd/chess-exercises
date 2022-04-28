@@ -22,167 +22,167 @@
     <h3>&nbsp;Please choose the options you prefer.</h3>
 
     <div id="main-wrapper">
-      <div class="row">
-        <div class="col-5">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
+      <form action="/exercises" method="POST" id="main-form">
+        <div class="row">
+          <div class="col-5">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
 
-                  <!-- CHECKBOXES -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="randomized" name="randomized" aria-describedby="randomized-help" onclick="showSelectPieces()">
-                    <label class="form-check-label">Select pieces</label>
-                    <small id="randomized-help" class="form-text">
-                      <br>Enable to enter specific piece types and quantities. Otherwise, amounts and types of pieces on the board will be completely random, i.e. a player can get from 0 up to 31 pieces.
-                    </small>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="extra-populated" name="extra-populated" aria-describedby="extra-populated-help">
-                    <label class="form-check-label">Overpopulated</label>
-                    <small id="extra-populated-help" class="form-text">
-                      <br>If selected, the board could have a maximum of 8 pieces per type of piece, e.g. 8 queens, 4 rooks, 2 bishops, 5 knights.
-                      <br>Otherwise, the maximum amount of each piece will be the same as the starting position: 8 pawns, 2 knights/bishops/rooks, 1 queen.
-                    </small>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="equal-material" name="equal-material" aria-describedby="equal-material-help">
-                    <label class="form-check-label">Equal material</label>
-                    <small id="equal-material-help" class="form-text">
-                      <br>White and Black will have equal material on the board.
-                    </small>
-                  </div>
-                  <br>
+                    <!-- CHECKBOXES -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="false" id="randomized" name="randomized" aria-describedby="randomized-help" onclick="showSelectPieces()">
+                      <label class="form-check-label">Select pieces</label>
+                      <small id="randomized-help" class="form-text">
+                        <br>Enable to enter specific piece types and quantities. Otherwise, amounts and types of pieces on the board will be completely random, i.e. a player can get from 0 up to 31 pieces.
+                      </small>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="true" id="extra-populated" name="extra-populated" aria-describedby="extra-populated-help">
+                      <label class="form-check-label">Overpopulated</label>
+                      <small id="extra-populated-help" class="form-text">
+                        <br>If selected, the board could have a maximum of 8 pieces per type of piece, e.g. 8 queens, 4 rooks, 2 bishops, 5 knights.
+                        <br>Otherwise, the maximum amount of each piece will be the same as the starting position: 8 pawns, 2 knights/bishops/rooks, 1 queen.
+                      </small>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="true" id="equal-material" name="equal-material" aria-describedby="equal-material-help">
+                      <label class="form-check-label">Equal material</label>
+                      <small id="equal-material-help" class="form-text">
+                        <br>White and Black will have equal material on the board.
+                      </small>
+                    </div>
+                    <br>
 
-                  <!-- INPUTS -->
-                  <div class="row">
-                    <div class="card bg-selectPiecesCard" id="select-pieces-card" style="display:none">
-                      <div class="card-body">
-                        <div class="row">
+                    <!-- INPUTS -->
+                    <div class="row">
+                      <div class="card bg-selectPiecesCard" id="select-pieces-card" style="display:none">
+                        <div class="card-body">
+                          <div class="row">
 
-                          <p>
-                            <i>Choose the pieces.</i>
-                          </p>
-                          <div class="col-6">
-                            <h4>
-                              White&nbsp;
-                              <img src=".././static/images/whitepawn.jpg" class="smallImage" width="25" height="30" alt="">
-                            </h4>
-                            <label for="white-pawns">Pawns</label>
-                            <select id="white-pawns" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                            </select>
-                            <br>
-                            <label for="white-knights">Knights</label>
-                            <select id="white-knights" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                            <br>
-                            <label for="white-bishops">Bishops</label>
-                            <select id="white-bishops" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                            <br>
-                            <label for="white-rooks">Rooks</label>
-                            <select id="white-rooks" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                            <br>
-                            <label for="white-queens">Queens</label>
-                            <select id="white-queens" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
+                            <p>
+                              <i>Choose the pieces.</i>
+                            </p>
+                            <div class="col-6">
+                              <h4>
+                                White&nbsp;
+                                <img src=".././static/images/whitepawn.jpg" class="smallImage" width="25" height="30" alt="">
+                              </h4>
+                              <label for="white-pawns">Pawns</label>
+                              <select id="white-pawns" class="selectPieces" name="white-pawns" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                              </select>
+                              <br>
+                              <label for="white-knights">Knights</label>
+                              <select id="white-knights" class="selectPieces" name="white-knights" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                              <br>
+                              <label for="white-bishops">Bishops</label>
+                              <select id="white-bishops" class="selectPieces" name="white-bishops" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                              <br>
+                              <label for="white-rooks">Rooks</label>
+                              <select id="white-rooks" class="selectPieces" name="white-rooks" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                              <br>
+                              <label for="white-queens">Queens</label>
+                              <select id="white-queens" class="selectPieces" name="white-queens" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                            </div>
+                            <div class="col-6">
+                              <h4>
+                                Black&nbsp;
+                                <img src=".././static/images/blackpawn.jpg" class="smallImage" width="25" height="30" alt="">
+                              </h4>
+                              <label for="black-pawns">Pawns</label>
+                              <select id="black-pawns" class="selectPieces" name="black-pawns" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                              </select>
+                              <br>
+                              <label for="black-knights">Knights</label>
+                              <select id="black-knights" class="selectPieces" name="black-knights" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                              <br>
+                              <label for="black-bishops">Bishops</label>
+                              <select id="black-bishops" class="selectPieces" name="black-bishops" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                              <br>
+                              <label for="black-rooks">Rooks</label>
+                              <select id="black-rooks" class="selectPieces" name="black-rooks" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                              <br>
+                              <label for="black-queens">Queens</label>
+                              <select id="black-queens" class="selectPieces" name="black-queens" form="main-form">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                              </select>
+                            </div>
+    
                           </div>
-                          <div class="col-6">
-                            <h4>
-                              Black&nbsp;
-                              <img src=".././static/images/blackpawn.jpg" class="smallImage" width="25" height="30" alt="">
-                            </h4>
-                            <label for="black-pawns">Pawns</label>
-                            <select id="black-pawns" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                            </select>
-                            <br>
-                            <label for="black-knights">Knights</label>
-                            <select id="black-knights" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                            <br>
-                            <label for="black-bishops">Bishops</label>
-                            <select id="black-bishops" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                            <br>
-                            <label for="black-rooks">Rooks</label>
-                            <select id="black-rooks" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                            <br>
-                            <label for="black-queens">Queens</label>
-                            <select id="black-queens" class="selectPieces">
-                              <option value="0">0</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                            </select>
-                          </div>
-  
                         </div>
                       </div>
                     </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <button type="submit" id="go" class="btn btn-primary">Go!</button>
                   </div>
                 </div>
               </div>
-              <!-- TODO crea button per generare FEN ed eventualmente scacchiera -->
-              <div class="row">
-                <div class="col">
-                  <form action="/exercises" method="post">
-                    <button type="submit" id="go" class="btn btn-primary">Go!</button>
-                  </form>
-                </div>
-              </div>
             </div>
+            <p><br><br></p>
           </div>
-          <p><br><br></p>
-        </div>
-        <div class="col-sm-7" id="fen-board">
-          {% if fen %}
-          The FEN: {{ fen }}
-          {% else %}
-          Qui ci andrà il FEN e la scacchiera.
-          {% endif %}
-          <!-- <form action="{{ url_for('exercises')}}" method="post"> -->
-        </div>
-      </div>
+
+          <div class="col-sm-7" id="fen-board">
+            <!-- TODO printa FEN correttamente e scacchiera -->
+            {% if fen %}
+            The FEN: {{ fen }}
+            {% else %}
+            Qui ci andrà il FEN e la scacchiera.
+            {% endif %}
+          </div>
+      </form>
     </div>
 
     <!-- * I did not manage to put the bottom navbar at the end of the page regardless of the screen dimension. -->
