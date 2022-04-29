@@ -1,4 +1,3 @@
-import json
 from flask import Flask, render_template, request
 from chess_exercises.fen import ChessBoard
 
@@ -19,7 +18,6 @@ def exercises():
     """
     Page with the exercises that will return the FEN and the chessboard image
     """
-    # TODO: scrivi la logica per generare il FEN utilizzando le funzioni sviluppate in precedenza
     if request.method == 'POST':
 
         # get parameters

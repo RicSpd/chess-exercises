@@ -80,7 +80,7 @@ class ChessBoard:
         if self.randomized:
             if self.extra_populated:
                 if self.equal_material:
-                    self.pieces_dict['n_pieces_white'] = self.pieces_dict['n_pieces_black'] = random.randint(0, 31)
+                    self.pieces_dict['n_pieces'] = random.randint(0, 31)
                 else:
                     self.pieces_dict['n_pieces_white'] = random.randint(0, 31)
                     self.pieces_dict['n_pieces_black'] = random.randint(0, 31)
@@ -125,28 +125,48 @@ class ChessBoard:
     def populate_board_randomized(self):
         """
         Place pieces on the board making sure that they are not on the same tile
-        This function is used when `self.randomized` and `self.extra_populated` are both True
+        This function is used when specific piece amounts are not provided
         """
-        # iterate for white (first) and black (after) player
-        # TODO: quando c'è sia extra_populated che equal_material True, i pezzi devono essere gli stessi,
-        # TODO: non basta che siano uguali il numero totale dei pezzi
-        for color in ['white', 'black']:
-            if color == 'white':
-                n_pieces = self.pieces_dict.get('n_pieces_white', 0)
-                pieces_list = self.pieces_list
-            else:
-                n_pieces = self.pieces_dict.get('n_pieces_black', 0)
-                pieces_list = [p.lower() for p in self.pieces_list]
-
-            # insert pieces until there are no more left
+        # to be sure that the "equal material" is applied with the pieces types too, not only their total amount
+        if self.randomized and self.extra_populated and self.equal_material:
+            n_pieces = self.pieces_dict.get('n_pieces', 0)
             while n_pieces > 0:
-                rank = random.randint(0, 7)
-                file = random.randint(0, 7)
-                piece = random.choice(pieces_list)
+                rank_white = random.randint(0, 7)
+                file_white = random.randint(0, 7)
+                rank_black = random.randint(0, 7)
+                file_black = random.randint(0, 7)
+                # we cannot place two pieces on the same tile, so go on with another iteration
+                if rank_white == rank_black and file_white == file_black:
+                    continue
+                piece = random.choice(self.pieces_list)
                 # check if square is empty and we have not a pawn on extreme ranks
-                if self.board[rank, file] == ' ' and not pawns_on_extreme_ranks(piece, rank):
-                    self.board[rank, file] = piece
+                if (self.board[rank_white, file_white] == ' ' and
+                    self.board[rank_black, file_black] == ' ' and
+                    not pawns_on_extreme_ranks(piece, rank_white) and
+                    not pawns_on_extreme_ranks(piece, rank_black)):
+                    self.board[rank_white, file_white] = piece
+                    self.board[rank_black, file_black] = piece.lower()
                     n_pieces -= 1
+
+        # iterate for white (first) and black (after) player
+        else:
+            for color in ['white', 'black']:
+                if color == 'white':
+                    n_pieces = self.pieces_dict.get('n_pieces_white', 0)
+                    pieces_list = self.pieces_list
+                else:
+                    n_pieces = self.pieces_dict.get('n_pieces_black', 0)
+                    pieces_list = [p.lower() for p in self.pieces_list]
+
+                # insert pieces until there are no more left
+                while n_pieces > 0:
+                    rank = random.randint(0, 7)
+                    file = random.randint(0, 7)
+                    piece = random.choice(pieces_list)
+                    # check if square is empty and we have not a pawn on extreme ranks
+                    if self.board[rank, file] == ' ' and not pawns_on_extreme_ranks(piece, rank):
+                        self.board[rank, file] = piece
+                        n_pieces -= 1
 
 
     def populate_board_specific(self):
@@ -193,7 +213,9 @@ class ChessBoard:
             self.pieces_random_amount()
 
         # procedure for random or specific FEN
-        if self.randomized and self.extra_populated and self.equal_material:
+        if (self.pieces_dict.get('n_pieces', 0) != 0 or
+            self.pieces_dict.get('n_pieces_white', 0) != 0 or
+            self.pieces_dict.get('n_pieces_black', 0) != 0):
             self.populate_board_randomized()
         else:
             self.populate_board_specific()
