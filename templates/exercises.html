@@ -32,14 +32,14 @@
 
                     <!-- CHECKBOXES -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="false" id="randomized" name="randomized" aria-describedby="randomized-help" onclick="showSelectPieces()">
+                      <input class="form-check-input" type="checkbox" value="False" id="randomized" name="randomized" aria-describedby="randomized-help" onclick="showSelectPieces()">
                       <label class="form-check-label">Select pieces</label>
                       <small id="randomized-help" class="form-text">
                         <br>Enable to enter specific piece types and quantities. Otherwise, amounts and types of pieces on the board will be completely random, i.e. a player can get from 0 up to 31 pieces.
                       </small>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="true" id="extra-populated" name="extra-populated" aria-describedby="extra-populated-help">
+                      <input class="form-check-input" type="checkbox" value="True" id="extra_populated" name="extra_populated" aria-describedby="extra-populated-help">
                       <label class="form-check-label">Overpopulated</label>
                       <small id="extra-populated-help" class="form-text">
                         <br>If selected, the board could have a maximum of 8 pieces per type of piece, e.g. 8 queens, 4 rooks, 2 bishops, 5 knights.
@@ -47,7 +47,7 @@
                       </small>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="true" id="equal-material" name="equal-material" aria-describedby="equal-material-help">
+                      <input class="form-check-input" type="checkbox" value="True" id="equal_material" name="equal_material" aria-describedby="equal-material-help">
                       <label class="form-check-label">Equal material</label>
                       <small id="equal-material-help" class="form-text">
                         <br>White and Black will have equal material on the board.
@@ -69,8 +69,8 @@
                                 White&nbsp;
                                 <img src=".././static/images/whitepawn.jpg" class="smallImage" width="25" height="30" alt="">
                               </h4>
-                              <label for="white-pawns">Pawns</label>
-                              <select id="white-pawns" class="selectPieces" name="white-pawns" form="main-form">
+                              <label for="white_pawns">Pawns</label>
+                              <select id="white_pawns" class="selectPieces" name="white_pawns" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -82,29 +82,29 @@
                                 <option value="8">8</option>
                               </select>
                               <br>
-                              <label for="white-knights">Knights</label>
-                              <select id="white-knights" class="selectPieces" name="white-knights" form="main-form">
+                              <label for="white_knights">Knights</label>
+                              <select id="white_knights" class="selectPieces" name="white_knights" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                               </select>
                               <br>
-                              <label for="white-bishops">Bishops</label>
-                              <select id="white-bishops" class="selectPieces" name="white-bishops" form="main-form">
+                              <label for="white_bishops">Bishops</label>
+                              <select id="white_bishops" class="selectPieces" name="white_bishops" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                               </select>
                               <br>
-                              <label for="white-rooks">Rooks</label>
-                              <select id="white-rooks" class="selectPieces" name="white-rooks" form="main-form">
+                              <label for="white_rooks">Rooks</label>
+                              <select id="white_rooks" class="selectPieces" name="white_rooks" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                               </select>
                               <br>
-                              <label for="white-queens">Queens</label>
-                              <select id="white-queens" class="selectPieces" name="white-queens" form="main-form">
+                              <label for="white_queens">Queens</label>
+                              <select id="white_queens" class="selectPieces" name="white_queens" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -115,8 +115,8 @@
                                 Black&nbsp;
                                 <img src=".././static/images/blackpawn.jpg" class="smallImage" width="25" height="30" alt="">
                               </h4>
-                              <label for="black-pawns">Pawns</label>
-                              <select id="black-pawns" class="selectPieces" name="black-pawns" form="main-form">
+                              <label for="black_pawns">Pawns</label>
+                              <select id="black_pawns" class="selectPieces" name="black_pawns" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -128,29 +128,29 @@
                                 <option value="8">8</option>
                               </select>
                               <br>
-                              <label for="black-knights">Knights</label>
-                              <select id="black-knights" class="selectPieces" name="black-knights" form="main-form">
+                              <label for="black_knights">Knights</label>
+                              <select id="black_knights" class="selectPieces" name="black_knights" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                               </select>
                               <br>
-                              <label for="black-bishops">Bishops</label>
-                              <select id="black-bishops" class="selectPieces" name="black-bishops" form="main-form">
+                              <label for="black_bishops">Bishops</label>
+                              <select id="black_bishops" class="selectPieces" name="black_bishops" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                               </select>
                               <br>
-                              <label for="black-rooks">Rooks</label>
-                              <select id="black-rooks" class="selectPieces" name="black-rooks" form="main-form">
+                              <label for="black_rooks">Rooks</label>
+                              <select id="black_rooks" class="selectPieces" name="black_rooks" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                               </select>
                               <br>
-                              <label for="black-queens">Queens</label>
-                              <select id="black-queens" class="selectPieces" name="black-queens" form="main-form">
+                              <label for="black_queens">Queens</label>
+                              <select id="black_queens" class="selectPieces" name="black_queens" form="main-form">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -177,9 +177,13 @@
           <div class="col-sm-7" id="fen-board">
             <!-- TODO printa FEN correttamente e scacchiera -->
             {% if fen %}
-            The FEN: {{ fen }}
+            The FEN: <br> {{ fen }}
+            <br><br>
+            The board:
+            <br>
+            {{ board }}
             {% else %}
-            Qui ci andrà il FEN e la scacchiera.
+            
             {% endif %}
           </div>
       </form>

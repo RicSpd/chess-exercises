@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request
 from chess_exercises.fen import ChessBoard
 
 
@@ -21,23 +21,28 @@ def exercises():
     """
     # TODO: scrivi la logica per generare il FEN utilizzando le funzioni sviluppate in precedenza
     if request.method == 'POST':
-        fen = json.dumps(request.form)
-        # randomized = request.data.get('randomized')
-        # extra_populated = request.data.get('extra_populated')
-        return render_template("exercises.html", fen=fen)
+
+        # get parameters
+        data = request.form
+        randomized = bool(data.get('randomized', True))
+        extra_populated = bool(data.get('extra_populated', False))
+        equal_material = bool(data.get('equal_material', False))
+        pieces_dict = {k: int(v) for k, v in data.items() if k.startswith(('white', 'black')) and v != '0'}
+        # by default, the form always returns the entries of the amount of pieces
+        pieces_dict = None if len(pieces_dict) == 0 else pieces_dict
+
+        # initialize board
+        board = ChessBoard(
+            randomized=randomized,
+            extra_populated=extra_populated,
+            equal_material=equal_material,
+            pieces_dict=pieces_dict
+        )
+
+        # generate board
+        board.populate_board()
+        board.generate_fen()
+
+        return render_template("exercises.html", fen=board.fen, board=board.board)
 
     return render_template("exercises.html")
-
-    # data = None
-    # if request.content_type == "application/json":
-    #     data = json.loads(request.data)
-    # else:
-    #     return Response(response="This predictor only supports JSON data.", status=415, mimetype="text/plain")
-
-    # # # Do the prediction
-    # # predictions = ScoringService(data).predict()
-
-    # # Convert from json to string
-    # result = json.dumps({'bella': 'ciao'})
-
-    # return Response(response=result, status=200, mimetype="application/json")

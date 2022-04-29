@@ -80,10 +80,10 @@ class ChessBoard:
         if self.randomized:
             if self.extra_populated:
                 if self.equal_material:
-                    self.pieces_dict['n_pieces_white'] = self.pieces_dict['n_pieces_black'] = random.randint(1, 31)
+                    self.pieces_dict['n_pieces_white'] = self.pieces_dict['n_pieces_black'] = random.randint(0, 31)
                 else:
-                    self.pieces_dict['n_pieces_white'] = random.randint(1, 31)
-                    self.pieces_dict['n_pieces_black'] = random.randint(1, 31)
+                    self.pieces_dict['n_pieces_white'] = random.randint(0, 31)
+                    self.pieces_dict['n_pieces_black'] = random.randint(0, 31)
             else:
                 if self.equal_material:
                     self.pieces_dict['white_pawns'] = self.pieces_dict['black_pawns'] = random.randint(0, 8)
@@ -128,6 +128,8 @@ class ChessBoard:
         This function is used when `self.randomized` and `self.extra_populated` are both True
         """
         # iterate for white (first) and black (after) player
+        # TODO: quando c'è sia extra_populated che equal_material True, i pezzi devono essere gli stessi,
+        # TODO: non basta che siano uguali il numero totale dei pezzi
         for color in ['white', 'black']:
             if color == 'white':
                 n_pieces = self.pieces_dict.get('n_pieces_white', 0)
@@ -191,7 +193,7 @@ class ChessBoard:
             self.pieces_random_amount()
 
         # procedure for random or specific FEN
-        if self.pieces_dict.get('n_pieces_white', 0) != 0 or self.pieces_dict.get('n_pieces_black', 0) != 0:
+        if self.randomized and self.extra_populated and self.equal_material:
             self.populate_board_randomized()
         else:
             self.populate_board_specific()
@@ -208,17 +210,3 @@ class ChessBoard:
         # unite the single-rank FEN's
         fen = '/'.join(fen) + ' w - - 0 1'
         self.fen = fen
-
-
-
-
-
-# # board = ChessBoard()
-# board = ChessBoard(randomized=True, pieces_dict={'white_queens': 1, 'black_rooks': 1})
-# board.populate_board()
-# board.generate_fen()
-
-# print(board.board)
-# print('')
-# print(board.fen)
-# print('\nOK!\n')
