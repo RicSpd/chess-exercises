@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template, request
 from chess_exercises.fen import ChessBoard
 
@@ -22,11 +23,11 @@ def exercises():
 
         # get parameters
         data = request.form
-        randomized = bool(data.get('randomized', True))
-        extra_populated = bool(data.get('extra_populated', False))
-        equal_material = bool(data.get('equal_material', False))
+        randomized = not data.get('randomized', 'True') == 'False'
+        extra_populated = data.get('extra_populated', 'False') == 'True'
+        equal_material = data.get('equal_material', 'False') == 'True'
         pieces_dict = {k: int(v) for k, v in data.items() if k.startswith(('white', 'black')) and v != '0'}
-        # by default, the form always returns the entries of the amount of pieces
+        # by default, the form always returns the entries of the amount of pieces, even if they are not selected
         pieces_dict = None if len(pieces_dict) == 0 else pieces_dict
 
         # initialize board
@@ -41,6 +42,6 @@ def exercises():
         board.populate_board()
         board.generate_fen()
 
-        return render_template("exercises.html", fen=board.fen, board=board.board)
+        return render_template("exercises.html", fen=board.fen, board=board.board, form=json.dumps(data))
 
     return render_template("exercises.html")

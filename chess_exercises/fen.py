@@ -232,3 +232,4 @@ class ChessBoard:
         # unite the single-rank FEN's
         fen = '/'.join(fen) + ' w - - 0 1'
         self.fen = fen
+        # * Not all generated FEN are valid, we should check whether they are or not

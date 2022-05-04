@@ -1,8 +1,7 @@
 // Function that show a card if a certain checkbox is checked.
 function showSelectPieces() {
-    // Get the checkbox
+    // Get the elements
     var checkbox = document.getElementById("randomized");
-    // Get the card
     var card = document.getElementById("select-pieces-card");
   
     // If the checkbox is checked, display the output card
@@ -11,6 +10,50 @@ function showSelectPieces() {
     } else {
         card.style.display = "none";
     }
+}
+
+
+
+$('.copyButton').tooltip({
+    trigger: 'click',
+    placement: 'bottom'
+  });
+  
+  function setTooltip(btn, message) {
+    btn.tooltip('hide')
+      .attr('data-original-title', message)
+      .tooltip('show');
+  }
+  
+  function hideTooltip(btn) {
+    setTimeout(function() {
+      btn.tooltip('hide');
+    }, 1000);
+  }
+  
+  var clipboard = new Clipboard('.copyButton');
+  
+  clipboard.on('success', function(e) {
+      var btn = $(e.trigger);
+    setTooltip(btn, 'Copied!');
+    hideTooltip(btn);
+  });
+
+
+
+function copyToClipboard() {
+    // Get the element
+    var copyText = document.getElementById("fen-string");
+
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
 }
 
 
